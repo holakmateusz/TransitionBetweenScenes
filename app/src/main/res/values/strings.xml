@@ -1,3 +1,4 @@
 <resources>
-  <string name="app_name">TransitionBetweenScenes</string>
+    <string name="app_name">TransitionBetweenScenes</string>
+    <string name="force_change_scene">Change Scene</string>
 </resources>
