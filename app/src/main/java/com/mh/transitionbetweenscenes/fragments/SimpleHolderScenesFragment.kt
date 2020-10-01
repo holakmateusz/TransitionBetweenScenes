@@ -9,15 +9,12 @@ class SimpleHolderScenesFragment :
         R.layout.default_scene_layout,
         R.layout.alternative_scene_layout
     ) {
-    override var bindingForDefaultScene: DefaultSceneLayoutBinding? = null
-    override var bindingForAlternativeScene: AlternativeSceneLayoutBinding? = null
 
     private var title: String = ""
     private var textBtn: String = ""
 
 
     override fun initDefaultScene() {
-        bindingForDefaultScene = view?.let { DefaultSceneLayoutBinding.bind(it) }
         bindingForDefaultScene?.apply {
             textTitle.text = title
             triggerSceneChangesBtn.text = textBtn
@@ -28,7 +25,6 @@ class SimpleHolderScenesFragment :
     }
 
     override fun initAlternativeScene() {
-        bindingForAlternativeScene = view?.let { AlternativeSceneLayoutBinding.bind(it) }
         bindingForAlternativeScene?.apply {
             textTitle.text = title
             triggerSceneChangesBtn.text = textBtn
