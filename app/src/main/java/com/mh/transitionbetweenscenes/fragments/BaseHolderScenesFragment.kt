@@ -69,7 +69,7 @@ abstract class BaseHolderScenesFragment<T : ViewDataBinding, K : ViewDataBinding
                     prepareEnterActionForScene(it) {
                         initAlternativeScene()
                     }
-                    TransitionManager.go(it)
+                    TransitionManager.go(it, defaultTransition)
                 }
             }
             false -> {
@@ -77,7 +77,7 @@ abstract class BaseHolderScenesFragment<T : ViewDataBinding, K : ViewDataBinding
                     prepareEnterActionForScene(it) {
                         initDefaultScene()
                     }
-                    TransitionManager.go(it)
+                    TransitionManager.go(it, defaultTransition)
                 }
             }
         }
