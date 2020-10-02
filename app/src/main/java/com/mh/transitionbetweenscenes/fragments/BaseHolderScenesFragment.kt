@@ -89,11 +89,10 @@ abstract class BaseHolderScenesFragment<T : ViewDataBinding, K : ViewDataBinding
     ) {
         scene.apply {
             setEnterAction {
-                takeIf { sceneRoot.childCount > 0 }?.let {
-                    if (it == defaultScene)
-                        bindingForDefaultScene = bindViewsFromScene(it)
-                    else
-                        bindingForAlternativeScene = bindViewsFromScene(it)
+                if (this == defaultScene) {
+                    bindingForDefaultScene = bindViewsFromScene(this)
+                } else {
+                    bindingForAlternativeScene = bindViewsFromScene(this)
                 }
                 initScene()
             }
@@ -101,7 +100,9 @@ abstract class BaseHolderScenesFragment<T : ViewDataBinding, K : ViewDataBinding
     }
 
     private fun <T : ViewDataBinding> bindViewsFromScene(scene: Scene): T? {
-        return DataBindingUtil.bind(scene.sceneRoot.getChildAt(PARENT_CHILD_POSITION))
+        scene.sceneRoot.getChildAt(PARENT_CHILD_POSITION)?.let {
+            return DataBindingUtil.bind(it)
+        } ?: return null
     }
 
     abstract fun initDefaultScene()
